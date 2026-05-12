@@ -1,0 +1,12 @@
+name = "irth-api"
+main = "src/index.ts"
+compatibility_date = "2025-02-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[[d1_databases]]
+binding = "DB"
+database_name = "irth-db"
+database_id = ""

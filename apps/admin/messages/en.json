@@ -1,0 +1,65 @@
+{
+  "common": {
+    "appName": "IRTH OS",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "noResults": "No results",
+    "error": "An error occurred",
+    "success": "Success"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "loginTitle": "Login to IRTH OS",
+    "loginButton": "Sign In",
+    "invalidCredentials": "Invalid credentials"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "products": "Products",
+    "inventory": "Inventory",
+    "customers": "Customers",
+    "shipping": "Shipping",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "orders": {
+    "title": "Orders",
+    "orderNumber": "Order Number",
+    "customer": "Customer",
+    "status": "Status",
+    "total": "Total",
+    "date": "Date",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "returned": "Returned"
+  },
+  "products": {
+    "title": "Products",
+    "name": "Product Name",
+    "brand": "Brand",
+    "price": "Price",
+    "stock": "Stock",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalOrders": "Total Orders",
+    "pendingOrders": "Pending Orders",
+    "totalRevenue": "Total Revenue",
+    "paidOrders": "Paid Orders"
+  }
+}

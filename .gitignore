@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+.wrangler/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+*.log
+.cache/
+out/
+.turbo/

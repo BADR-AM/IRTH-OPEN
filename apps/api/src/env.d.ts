@@ -1,0 +1,29 @@
+export interface Env {
+  DATABASE_URL: string
+  BETTER_AUTH_SECRET: string
+  BETTER_AUTH_URL: string
+  PAYMOB_API_KEY: string
+  PAYMOB_HMAC_SECRET: string
+  PAYMOB_INTEGRATION_ID: string
+  FAWRY_MERCHANT_CODE?: string
+  FAWRY_SECURITY_KEY?: string
+  BOSTA_API_KEY: string
+  BOSTA_BUSINESS_ID: string
+  BOSTA_WEBHOOK_SECRET: string
+  MYLERZ_API_KEY?: string
+  RESEND_API_KEY: string
+  FROM_EMAIL: string
+  WHATSAPP_API_KEY?: string
+  WHATSAPP_FROM?: string
+  R2_ACCOUNT_ID?: string
+  R2_ACCESS_KEY_ID?: string
+  R2_SECRET_ACCESS_KEY?: string
+  R2_BUCKET_NAME?: string
+  ETA_CLIENT_ID?: string
+  ETA_CLIENT_SECRET?: string
+  ETA_ENV?: string
+  COMPANY_TAX_ID?: string
+  ARCJET_KEY?: string
+  WEBSITE_WEBHOOK_SECRET: string
+  ENVIRONMENT: string
+}

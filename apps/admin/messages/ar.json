@@ -1,0 +1,65 @@
+{
+  "common": {
+    "appName": "IRTH OS",
+    "loading": "جارِ التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "create": "إنشاء",
+    "search": "بحث",
+    "noResults": "لا توجد نتائج",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "loginTitle": "تسجيل الدخول إلى IRTH OS",
+    "loginButton": "دخول",
+    "invalidCredentials": "بيانات الدخول غير صحيحة"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "orders": "الطلبات",
+    "products": "المنتجات",
+    "inventory": "المخزون",
+    "customers": "العملاء",
+    "shipping": "الشحن",
+    "reports": "التقارير",
+    "settings": "الإعدادات"
+  },
+  "orders": {
+    "title": "الطلبات",
+    "orderNumber": "رقم الطلب",
+    "customer": "العميل",
+    "status": "الحالة",
+    "total": "الإجمالي",
+    "date": "التاريخ",
+    "pending": "قيد الانتظار",
+    "confirmed": "مؤكد",
+    "processing": "قيد المعالجة",
+    "shipped": "تم الشحن",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغي",
+    "returned": "مرتجع"
+  },
+  "products": {
+    "title": "المنتجات",
+    "name": "اسم المنتج",
+    "brand": "البراند",
+    "price": "السعر",
+    "stock": "المخزون",
+    "active": "نشط",
+    "inactive": "غير نشط"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "totalOrders": "إجمالي الطلبات",
+    "pendingOrders": "طلبات معلقة",
+    "totalRevenue": "إجمالي الإيرادات",
+    "paidOrders": "طلبات مدفوعة"
+  }
+}

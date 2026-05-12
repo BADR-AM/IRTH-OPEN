@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-arabic: "Noto Sans Arabic", sans-serif;
+  --font-display: "Cairo", sans-serif;
+  --color-background: #070a0f;
+  --color-foreground: #c8d6f0;
+  --color-surface: #161b22;
+  --color-raised: #1c2230;
+  --color-border: #2a3345;
+  --color-muted: #556a8a;
+  --color-sub: #8a9bb8;
+  --color-gold: #f0b429;
+  --color-gold2: #ffd166;
+  --color-green: #3ecf8e;
+  --color-blue: #4d9fff;
+  --color-purple: #a78bfa;
+  --color-red: #f87171;
+}
+
+body {
+  font-family: var(--font-arabic);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}

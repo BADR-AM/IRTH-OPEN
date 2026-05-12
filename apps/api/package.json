@@ -1,0 +1,27 @@
+{
+  "name": "@irth/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "type-check": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@irth/db": "workspace:*",
+    "@irth/types": "workspace:*",
+    "@irth/utils": "workspace:*",
+    "@trpc/server": "^11.0.0",
+    "@hono/trpc-server": "^0.3.0",
+    "hono": "^4.7.0",
+    "zod": "^3.24.0",
+    "better-auth": "^1.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250201.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.107.0"
+  }
+}
