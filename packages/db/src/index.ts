@@ -6,6 +6,8 @@ export * from './schema/roles.js'
 export * from './schema/suppliers.js'
 export * from './schema/notifications.js'
 export * from './schema/files.js'
+export * from './schema/marketing.js'
+export * from './schema/finance.js'
 
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'

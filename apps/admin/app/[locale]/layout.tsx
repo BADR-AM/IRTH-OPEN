@@ -25,6 +25,7 @@ const navItems = [
   { href: '/shipping', label: 'الشحن', icon: '🚚' },
   { href: '/suppliers', label: 'الموردون', icon: '🏭' },
   { href: '/roles', label: 'الأدوار', icon: '🔐' },
+  { href: '/finance', label: 'المالية', icon: '💳' },
   { href: '/settings', label: 'الإعدادات', icon: '⚙️' },
 ]
 
