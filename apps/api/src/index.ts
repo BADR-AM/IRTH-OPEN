@@ -8,6 +8,8 @@ import { ordersRouter } from './routes/orders'
 import { paymentsRouter } from './routes/payments'
 import { inventoryRouter } from './routes/inventory'
 import { shippingRouter } from './routes/shipping'
+import { rolesRouter, permissionsRouter } from './routes/roles'
+import { suppliersRouter } from './routes/suppliers'
 import { webhooksRouter } from './routes/webhooks'
 import { trpcRouter } from './trpc/router'
 import { auth } from './lib/auth'
@@ -28,6 +30,9 @@ app.route('/api/v1/orders', ordersRouter)
 app.route('/api/v1/payments', paymentsRouter)
 app.route('/api/v1/inventory', inventoryRouter)
 app.route('/api/v1/shipping', shippingRouter)
+app.route('/api/v1/roles', rolesRouter)
+app.route('/api/v1/permissions', permissionsRouter)
+app.route('/api/v1/suppliers', suppliersRouter)
 app.route('/api/v1/webhooks', webhooksRouter)
 app.route('/trpc', trpcRouter)
 

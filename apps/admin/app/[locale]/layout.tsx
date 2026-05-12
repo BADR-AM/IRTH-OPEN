@@ -23,6 +23,9 @@ const navItems = [
   { href: '/orders', label: 'الطلبات', icon: '📋' },
   { href: '/products', label: 'المنتجات', icon: '📦' },
   { href: '/shipping', label: 'الشحن', icon: '🚚' },
+  { href: '/suppliers', label: 'الموردون', icon: '🏭' },
+  { href: '/roles', label: 'الأدوار', icon: '🔐' },
+  { href: '/settings', label: 'الإعدادات', icon: '⚙️' },
 ]
 
 export default async function LocaleLayout({
