@@ -89,7 +89,7 @@ suppliersRouter.post('/purchase-orders', async (c) => {
     orgId, supplierId, poNumber,
     totalAmount: totalAmount.toString(),
     status: 'draft',
-    expectedDate: poData.expectedDate ? new Date(poData.expectedDate) : undefined,
+    expectedDate: poData.expectedDate,
     notes: poData.notes,
   }).returning()
 

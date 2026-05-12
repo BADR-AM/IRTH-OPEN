@@ -88,7 +88,6 @@ export async function submitReceipt(
         totalAmount: receipt.totalWithVat,
         totalItemsDiscount: 0,
         extraDiscount: 0,
-        totalDiscount: 0,
         taxTotals: [{ taxType: 'T1', amount: receipt.vatAmount }],
         totalOtherChargesFees: 0,
         documentNote: `Order ${receipt.orderNumber}`,

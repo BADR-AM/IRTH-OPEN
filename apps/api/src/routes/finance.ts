@@ -74,7 +74,7 @@ financeRouter.post('/expenses', async (c) => {
   const [expense] = await db.insert(expenses).values({
     ...parsed.data,
     amount: parsed.data.amount.toString(),
-    expenseDate: parsed.data.expenseDate ? new Date(parsed.data.expenseDate) : new Date(),
+    expenseDate: parsed.data.expenseDate ?? new Date().toISOString().split('T')[0],
   }).returning()
 
   return c.json({ data: expense, error: null }, 201)

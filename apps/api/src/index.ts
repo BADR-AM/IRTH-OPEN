@@ -12,8 +12,6 @@ import { rolesRouter, permissionsRouter } from './routes/roles'
 import { suppliersRouter } from './routes/suppliers'
 import { financeRouter } from './routes/finance'
 import { webhooksRouter } from './routes/webhooks'
-import { trpcRouter } from './trpc/router'
-import { auth } from './lib/auth'
 
 const app = new Hono<{Bindings: Env}>()
 
@@ -36,8 +34,5 @@ app.route('/api/v1/permissions', permissionsRouter)
 app.route('/api/v1/suppliers', suppliersRouter)
 app.route('/api/v1/finance', financeRouter)
 app.route('/api/v1/webhooks', webhooksRouter)
-app.route('/trpc', trpcRouter)
-
-app.on(['POST', 'GET'], '/api/auth/*', (c) => auth.handler(c.req.raw))
 
 export default app

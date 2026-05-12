@@ -14,13 +14,14 @@
     "@irth/types": "workspace:*",
     "@irth/utils": "workspace:*",
     "@trpc/server": "^11.0.0",
-    "@hono/trpc-server": "^0.3.0",
     "hono": "^4.7.0",
     "zod": "^3.24.0",
+    "drizzle-orm": "^0.39.0",
     "better-auth": "^1.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250201.0",
+    "@types/node": "^22.0.0",
     "typescript": "^5.7.0",
     "wrangler": "^3.107.0"
   }
