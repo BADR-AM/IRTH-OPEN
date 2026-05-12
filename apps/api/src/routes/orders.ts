@@ -1,9 +1,10 @@
 import { Hono } from 'hono'
 import { z } from 'zod'
 import type { Env } from '../env.d'
-import { db, orders, orderItems, products, productVariants } from '@irth/db'
+import { db, orders, orderItems, products, productVariants, auditLog } from '@irth/db'
 import { eq } from 'drizzle-orm'
 import { generateOrderNumber, calcVat } from '@irth/utils'
+import { sendOrderConfirmation, sendOrderDelivered } from '../lib/whatsapp'
 
 export const ordersRouter = new Hono<{Bindings: Env}>()
 
@@ -132,6 +133,22 @@ ordersRouter.patch('/:id/status', async (c) => {
     before: { status: order.status },
     after: { status },
   })
+
+  if (status === 'confirmed' && c.env.WHATSAPP_API_KEY && c.env.WHATSAPP_FROM && order.customerPhone) {
+    await sendOrderConfirmation(
+      { apiKey: c.env.WHATSAPP_API_KEY, from: c.env.WHATSAPP_FROM },
+      order.customerPhone,
+      { orderNumber: order.orderNumber, totalAmount: order.totalAmount, customerName: order.customerName || '' }
+    )
+  }
+
+  if (status === 'delivered' && c.env.WHATSAPP_API_KEY && c.env.WHATSAPP_FROM && order.customerPhone) {
+    await sendOrderDelivered(
+      { apiKey: c.env.WHATSAPP_API_KEY, from: c.env.WHATSAPP_FROM },
+      order.customerPhone,
+      { orderNumber: order.orderNumber, customerName: order.customerName || '' }
+    )
+  }
 
   return c.json({ data: updated, error: null })
 })

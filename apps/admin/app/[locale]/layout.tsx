@@ -22,6 +22,7 @@ const navItems = [
   { href: '/', label: 'لوحة التحكم', icon: '◇' },
   { href: '/orders', label: 'الطلبات', icon: '📋' },
   { href: '/products', label: 'المنتجات', icon: '📦' },
+  { href: '/shipping', label: 'الشحن', icon: '🚚' },
 ]
 
 export default async function LocaleLayout({
