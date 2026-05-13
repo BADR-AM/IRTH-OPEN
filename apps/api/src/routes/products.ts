@@ -17,6 +17,16 @@ const createProductSchema = z.object({
   isFeatured: z.boolean().optional(),
 })
 
+const updateProductSchema = z.object({
+  nameAr: z.string().min(1).max(200).optional(),
+  nameEn: z.string().max(200).optional(),
+  descAr: z.string().optional(),
+  brand: z.enum(['sidr', 'bereket']).optional(),
+  categoryId: z.string().uuid().optional(),
+  isActive: z.boolean().optional(),
+  isFeatured: z.boolean().optional(),
+})
+
 productsRouter.get('/', async (c) => {
   const orgId = c.req.query('orgId')
   if (!orgId) return c.json({ data: null, error: 'orgId is required' }, 400)
@@ -44,7 +54,9 @@ productsRouter.post('/', async (c) => {
 productsRouter.patch('/:id', async (c) => {
   const id = c.req.param('id')
   const body = await c.req.json()
-  const [updated] = await db.update(products).set(body).where(eq(products.id, id)).returning()
+  const parsed = updateProductSchema.safeParse(body)
+  if (!parsed.success) return c.json({ data: null, error: parsed.error.message }, 400)
+  const [updated] = await db.update(products).set(parsed.data).where(eq(products.id, id)).returning()
   if (!updated) return c.json({ data: null, error: 'Product not found' }, 404)
   return c.json({ data: updated, error: null })
 })

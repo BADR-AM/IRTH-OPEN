@@ -16,7 +16,7 @@ const createPermissionSchema = z.object({
   orgId: z.string().uuid(),
   resource: z.string().min(1),
   action: z.string().min(1),
-  scope: z.any().optional(),
+  scope: z.record(z.string(), z.unknown()).optional(),
 })
 
 rolesRouter.get('/', async (c) => {
@@ -46,10 +46,10 @@ rolesRouter.get('/:id/permissions', async (c) => {
 rolesRouter.post('/:id/permissions', async (c) => {
   const roleId = c.req.param('id')
   const body = await c.req.json()
-  const { permissionIds } = z.object({ permissionIds: z.array(z.string().uuid()) }).parse(body)
+  const { orgId, permissionIds } = z.object({ orgId: z.string().uuid(), permissionIds: z.array(z.string().uuid()) }).parse(body)
 
   for (const permissionId of permissionIds) {
-    await db.insert(rolePermissions).values({ roleId, permissionId }).onConflictDoNothing()
+    await db.insert(rolePermissions).values({ orgId, roleId, permissionId }).onConflictDoNothing()
   }
   return c.json({ data: { assigned: permissionIds.length }, error: null }, 201)
 })

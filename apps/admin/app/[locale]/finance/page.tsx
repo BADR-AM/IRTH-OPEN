@@ -13,15 +13,27 @@ type Expense = {
   expenseDate: string
 }
 
+type CashFlow = {
+  cashOnHand: number
+  inTransit: number
+  owed: number
+  netCashFlow: number
+  paidRevenue: number
+  pendingCOD: number
+  paidExpenses: number
+  pendingExpenses: number
+  deliveredOrders: number
+}
+
 export default function FinancePage() {
   const [expenses, setExpenses] = useState<Expense[]>([])
-  const [cashFlow, setCashFlow] = useState<any>(null)
+  const [cashFlow, setCashFlow] = useState<CashFlow | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     Promise.all([
       apiGet<Expense[]>('/api/v1/finance/expenses?orgId=00000000-0000-0000-0000-000000000000'),
-      apiGet<any>('/api/v1/finance/cash-flow?orgId=00000000-0000-0000-0000-000000000000'),
+      apiGet<CashFlow>('/api/v1/finance/cash-flow?orgId=00000000-0000-0000-0000-000000000000'),
     ]).then(([ex, cf]) => {
       if (ex.data) setExpenses(ex.data)
       if (cf.data) setCashFlow(cf.data)

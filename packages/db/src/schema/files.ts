@@ -17,6 +17,7 @@ export const files = pgTable('files', {
 
 export const sharedLinks = pgTable('shared_links', {
   id:         uuid().primaryKey().defaultRandom(),
+  orgId:      uuid('org_id').notNull(),
   fileId:     uuid('file_id').notNull(),
   token:      varchar({length: 200}).unique().notNull(),
   expiresAt:  timestamp('expires_at'),

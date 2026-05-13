@@ -20,6 +20,8 @@ export const permissions = pgTable('permissions', {
 })
 
 export const rolePermissions = pgTable('role_permissions', {
+  id:           uuid().primaryKey().defaultRandom(),
+  orgId:        uuid('org_id').notNull(),
   roleId:       uuid('role_id').references(() => roles.id),
   permissionId: uuid('permission_id').references(() => permissions.id),
 })

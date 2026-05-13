@@ -21,10 +21,9 @@ inventoryRouter.get('/levels', async (c) => {
   const variantId = c.req.query('variantId')
   if (!orgId) return c.json({ data: null, error: 'orgId is required' }, 400)
 
-  const filter: any[] = [eq(stockLevels.orgId, orgId)]
-  if (variantId) filter.push(eq(stockLevels.variantId, variantId))
-
-  const levels = await db.select().from(stockLevels).where(and(...filter))
+  const levels = await db.select().from(stockLevels).where(
+    and(eq(stockLevels.orgId, orgId), variantId ? eq(stockLevels.variantId, variantId) : undefined)
+  )
   return c.json({ data: levels, error: null })
 })
 
@@ -33,10 +32,9 @@ inventoryRouter.get('/movements', async (c) => {
   const variantId = c.req.query('variantId')
   if (!orgId) return c.json({ data: null, error: 'orgId is required' }, 400)
 
-  const filter: any[] = [eq(stockMovements.orgId, orgId)]
-  if (variantId) filter.push(eq(stockMovements.variantId, variantId))
-
-  const movements = await db.select().from(stockMovements).where(and(...filter))
+  const movements = await db.select().from(stockMovements).where(
+    and(eq(stockMovements.orgId, orgId), variantId ? eq(stockMovements.variantId, variantId) : undefined)
+  )
   return c.json({ data: movements, error: null })
 })
 

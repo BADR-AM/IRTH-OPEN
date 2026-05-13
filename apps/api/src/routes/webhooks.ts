@@ -18,7 +18,7 @@ webhooksRouter.post('/paymob', async (c) => {
   ]
   const str = hmacKeys.map(k => {
     const keys = k.split('.')
-    return keys.reduce((o: any, key) => o?.[key], body.obj) ?? ''
+    return keys.reduce((o: Record<string, unknown>, key: string) => o?.[key] as Record<string, unknown>, body.obj as Record<string, unknown>) ?? ''
   }).join('')
 
   const key = await crypto.subtle.importKey(
@@ -28,7 +28,7 @@ webhooksRouter.post('/paymob', async (c) => {
   const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(str))
   const computed = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('')
 
-  if (computed !== hmac) return c.json({ error: 'Invalid HMAC' }, 401)
+  if (computed !== hmac) return c.json({ data: null, error: 'Invalid HMAC' }, 401)
 
   if (body.obj?.success) {
     await db.update(orders)
@@ -42,7 +42,7 @@ webhooksRouter.post('/paymob', async (c) => {
       .where(eq(orders.orderNumber, body.obj.order?.merchant_order_id))
   }
 
-  return c.json({ received: true })
+  return c.json({ data: { received: true }, error: null })
 })
 
 webhooksRouter.post('/fawry', async (c) => {
@@ -56,7 +56,7 @@ webhooksRouter.post('/fawry', async (c) => {
   const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(str))
   const computed = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('')
 
-  if (computed !== signature) return c.json({ error: 'Invalid signature' }, 401)
+  if (computed !== signature) return c.json({ data: null, error: 'Invalid signature' }, 401)
 
   const status = body.paymentStatus
   if (status === 'PAID') {
@@ -65,7 +65,7 @@ webhooksRouter.post('/fawry', async (c) => {
       .where(eq(orders.orderNumber, merchantRef))
   }
 
-  return c.json({ received: true })
+  return c.json({ data: { received: true }, error: null })
 })
 
 webhooksRouter.post('/bosta', async (c) => {
@@ -81,7 +81,7 @@ webhooksRouter.post('/bosta', async (c) => {
     new Uint8Array(signature?.split('').map(c => c.charCodeAt(0)) ?? []),
     encoder.encode(body)
   )
-  if (!valid) return c.json({ error: 'Invalid signature' }, 401)
+  if (!valid) return c.json({ data: null, error: 'Invalid signature' }, 401)
 
   const data = JSON.parse(body)
   if (data.status) {
@@ -90,5 +90,5 @@ webhooksRouter.post('/bosta', async (c) => {
       .where(eq(orders.orderNumber, data.reference))
   }
 
-  return c.json({ received: true })
+  return c.json({ data: { received: true }, error: null })
 })
